@@ -1,10 +1,11 @@
 import csv
 
+
 def _cut(sentence):
     new_sentence = []
     sen = []
     for i in sentence:
-        if i in ['。', '！', '？', '?', '，','。'] and len(sen) != 0:
+        if i in ['。', '！', '？', '?', '，','。','、'] and len(sen) != 0:
             sen.append(i)
             new_sentence.append("".join(sen))  # ['虽然BillRoper正...接近。' , '与父母，...之首。' , ]
             sen = []
@@ -26,15 +27,18 @@ def _cut(sentence):
         new_sentence.append("".join(sen))
     return new_sentence
 
-with open('3.txt', 'r', encoding='utf-8-sig')as f, open('wiki4.csv', 'w', encoding='utf-8-sig',newline='')as e:
-    reader = csv.reader(f)
-    writer = csv.writer(e)
-    for idx, line in enumerate(reader):
-        if len(line) >= 1:
-            sentence1 = _cut(''.join(line))
-        for j in sentence1:
-            if len(j) >= 8:
-                writer.writerow([j])
+num_files = 2
+for i in range(2):
+    with open(str(i)+'.txt', 'r', encoding='utf-8-sig')as f, open('wiki'+str(i)+'.csv', 'w', encoding='utf-8-sig', newline = '')as e:
+        reader = csv.reader(f)
+        writer = csv.writer(e)
+        for idx, line in enumerate(reader):
+            if len(line) >= 1:
+                sentence1 = _cut(''.join(line))
+            for j in sentence1:
+                if len(j) >= 8:
+                    writer.writerow([j])
+
 
 
 
