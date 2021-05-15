@@ -37,7 +37,7 @@ for i in range(2):
                 sentence1 = _cut(''.join(line))
             for j in sentence1:
                 if len(j) >= 8:
-                    writer.writerow([j])
+                    writer.writerow([j]) # 选择八个字以上的句子
 
 
 
