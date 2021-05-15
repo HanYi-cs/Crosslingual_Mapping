@@ -14,3 +14,5 @@ python WikiExtractor.py -b 250M -o wiki_ja jawiki-20210420-pages-articles-multis
 使用open.cc将繁体转换为简体
 
 opencc -i wiki_03 -o zhwiki_jian_zh.txt -c t2s.json
+
+使用sentence_split.py将维基百科中的大段文字进行句子切分
